@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="general" targetRuntime="mybatis3">
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="utf-8"/>
+
+        <plugin type="com.report.data.mybatis_generator.plugins.MysqlPagingPlugin"/>
+        <plugin type="com.report.data.mybatis_generator.plugins.ByteToIntegerPlugin"/>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/bidder"
+                        userId="root" password="111"/>
+
+        <javaModelGenerator targetPackage="xinmei.report.data.bean"
+                            targetProject="/Users/wanghuimin/IdeaProjects/report-data/src/main/java"/>
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject="/Users/wanghuimin/IdeaProjects/report-data/src/main/resources"/>
+        <javaClientGenerator targetPackage="xinmei.report.data"
+                             targetProject="/Users/wanghuimin/IdeaProjects/report-data/src/main/java"
+                             type="XMLMAPPER"/>
+
+        <table tableName="partner_information">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+            <columnOverride column="state" javaType="xinmei.report.data.enums.State"/>
+            <columnOverride column="type" javaType="xinmei.report.data.enums.RTBType"/>
+            <columnOverride column="utc" javaType="xinmei.report.data.enums.TimeZone"/>
+        </table>
+<!--        <table tableName="olaex_pub_ads">-->
+<!--            <generatedKey column="id" sqlStatement="mysql" identity="true"/>-->
+<!--            <columnOverride column="account_type" javaType="biz.olaex.appads.bean.AdsAccountType"/>-->
+<!--        </table>-->
+
+    </context>
+
+
+</generatorConfiguration>
