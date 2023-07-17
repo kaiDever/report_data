@@ -5,7 +5,7 @@ spring:
   application:
     name: report-data
   profiles:
-    active: local
+    active: dev
 
   # 数据库设置
   datasource:
